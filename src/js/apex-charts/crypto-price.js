@@ -18,8 +18,14 @@ function apexCryptoPriceChart() {
 			styles.colors().theme.dark,
 		];
 
-    function init($this) {
-      const priceData = require('../../data/prices')
+    async function init($this) {
+      let priceData = [];
+      const api = require('../api');
+      try {
+        priceData = await api.getJson('/api/prices');
+      } catch (e) {
+        try { priceData = require('../../data/prices'); } catch (_) { priceData = []; }
+      }
       var options = {
         chart: {
 					stacked: false,
@@ -130,8 +136,23 @@ function apexCryptoPriceChart() {
         ? height
         : 350;
 
-      // Create chart
-      new apexCharts($this, options).render();
+             // Create chart
+      const chart = new apexCharts($this, options);
+      await chart.render();
+
+      // Live updates via WS
+      const { connectWs } = require('../api');
+      connectWs({
+        onMessage: (msg) => {
+          if (msg?.type === 'price_tick' && msg.data) {
+            const x = new Date(msg.data.ts).getTime();
+            const y = [msg.data.price, msg.data.price, msg.data.price, msg.data.price];
+            const series = chart.w.config.series[0].data.slice();
+            series.push({ x, y });
+            chart.updateSeries([{ name: 'Price', data: series }], false);
+          }
+        },
+      });
     }
 
     if (chartEl) {

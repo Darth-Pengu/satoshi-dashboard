@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
+  // Live trades
+  try { require('./trades-live').initTradesLive(); } catch (_) {}
+
   // Datepicker
   const dateRangePickerEl = document.querySelector(".daterangepicker");
   if (dateRangePickerEl) {
