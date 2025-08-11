@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="{{ site.lang }}" data-theme="light">
+  <head>
+    {% include 'meta.njk' %}
+    {% include 'styles.njk' %}
+  </head>
+  <body>
+    {# Overlays #}
+    {% modal 'Deposit liquidity', 'depositLiquidityModal' %}
+      {% renderFile "./src/components/form-deposit-liquidity.njk" %}
+    {% endmodal %}
+    {# Container #}
+    <div class="bg-body-secondary">
+      {# Sidebar #}
+      {% include "partials/navbar.njk" %}
+      {# Content #}
+      <div class="flex-lg-1 vstack vh-lg-100">
+        <div class="d-flex py-4">
+          <div class="flex-none">
+            <div class="input-group input-group-sm input-group-inline w-72">
+              <span class="input-group-text">
+                <i class="bi bi-search me-2"></i>
+              </span>
+              <input type="search" class="form-control ps-0" placeholder="Search" aria-label="Search">
+            </div>
+          </div>
+          <div class="hstack gap-4 px-4">
+            <div class="d-flex gap-2 text-xs">
+              <span class="text-heading fw-semibold">Cryptos:</span>
+              <span class="text-muted">21,713</span>
+            </div>
+            <div class="d-flex gap-2 text-xs">
+              <span class="text-heading fw-semibold">Market Cap:</span>
+              <span class="text-muted">$871,322,862,585</span>
+            </div>
+            <div class="d-flex gap-2 text-xs">
+              <span class="text-heading fw-semibold">24h Vol:</span>
+              <span class="text-muted">$180,639,667,232</span>
+            </div>
+            <div class="d-flex gap-2 text-xs">
+              <span class="text-heading fw-semibold">Dominance</span>
+              <span class="text-muted">BTC: 38.1% ETH: 18.0%</span>
+            </div>
+          </div>
+          <div class="hstack gap-4 px-10 ms-auto">
+            <a href="# " class="btn btn-sm btn-square w-rem-7 h-rem-7 btn-white">
+              <i class="bi bi-bell"></i>
+            </a>
+            <div class="d-flex align-items-center position-relative">
+              <div>
+                <div class="avatar avatar-xs rounded-circle">
+                  {% img src="https://images.unsplash.com/photo-1522307837370-cc113a36b784?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" %}
+                </div>
+              </div>
+              <div class="d-none d-sm-block ms-2">
+                <a href="#" class="text-xs fw-bold text-heading">Alexa</a>
+              </div>
+              <a href="# " class="btn btn-sm btn-square w-rem-6 h-rem-6 btn-white ms-3 text-xs">
+                <i class="bi bi-chevron-down"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="flex-fill overflow-y-lg-auto bg-body rounded-top-start-4 border shadow">
+          <main class="container-fluid {{ container if container else 'p-10' }}">
+            {% if header != false %}
+              {% renderFile "./src/components/heading-page-1.njk", {
+                title: title
+              } %}
+            {% endif %}
+            {{ content | safe }}
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <script src="{{ '/js/main.js' | url }}"></script>
+  </body>
+</html>

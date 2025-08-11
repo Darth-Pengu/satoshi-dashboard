@@ -1,0 +1,137 @@
+---
+layout: app
+header: false
+title: Account Settings
+---
+
+{% renderFile "./src/components/heading-page-account.njk", {
+  title: title,
+  has_url: true
+} %}
+
+<div class="d-flex align-items-end justify-content-between">
+  <div>
+    <h4 class="fw-semibold mb-1">General</h4>
+    <p class="text-sm text-muted">
+      By filling your data you get a much better experience using our website.
+    </p>
+  </div>
+  <div class="d-none d-md-flex gap-2">
+    <button type="button" class="btn btn-sm btn-neutral">Cancel</button>
+    <button type="submit" class="btn btn-sm btn-primary">Save</button>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row align-items-center">
+  <div class="col-md-2">
+    <label class="form-label">Your name</label>
+  </div>
+  <div class="col-md-8 col-xl-5">
+    <div class="">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row align-items-center">
+  <div class="col-md-2">
+    <label class="form-label">Bio</label>
+  </div>
+  <div class="col-md-8 col-xl-5">
+    <div class="">
+      <label class="form-label visually-hidden">Bio</label>
+      <textarea class="form-control" placeholder="Your email" rows="3"></textarea>
+    </div>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row align-items-center">
+  <div class="col-md-2">
+    <label class="form-label">Username</label>
+  </div>
+  <div class="col-md-8 col-xl-5">
+    <div class="">
+      <div class="input-group position-relative">
+        <span class="input-group-text">satoshi.com/</span>
+        <input type="email" class="form-control" placeholder="username" aria-label="username">
+        <span class="input-group-text">.com</span>
+      </div>
+      <span class="mt-2 valid-feedback">Looks good!</span>
+    </div>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row align-items-center">
+  <div class="col-md-2">
+    <label class="form-label">Avatar</label>
+  </div>
+  <div class="col-md-8 col-xl-5">
+    <div class="">
+      <div class="d-flex align-items-center">
+        <a href="#" class="avatar avatar-lg bg-warning rounded-circle text-white">
+          {% img src="https://images.unsplash.com/photo-1579463148228-138296ac3b98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" %}
+        </a>
+        <div class="hstack gap-2 ms-5">
+          <label for="file_upload" class="btn btn-sm btn-neutral">
+            <span>Upload</span>
+            <input type="file" name="file_upload" id="file_upload" class="visually-hidden">
+          </label>
+          <a href="#" class="btn d-inline-flex btn-sm btn-neutral text-danger">
+            <span>
+              <i class="bi bi-trash"></i>
+            </span>
+            <span class="d-none d-sm-block me-2">Remove</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row align-items-center">
+  <div class="col-md-2">
+    <label class="form-label">Cover</label>
+  </div>
+  <div class="col-md-8 col-xl-5">
+    <div class="">
+      <label class="form-label visually-hidden">Cover</label>
+      <div class="card shadow-none border-2 border-dashed border-primary-hover position-relative">
+        <div class="d-flex justify-content-center px-5 py-5">
+          <label for="cover_upload" class="position-absolute w-100 h-100 top-0 start-0 cursor-pointer">
+            <input id="cover_upload" name="cover_upload" type="file" class="visually-hidden">
+          </label>
+          <div class="text-center">
+            <div class="text-2xl text-muted">
+              <i class="bi bi-upload"></i>
+            </div>
+            <div class="d-flex text-sm mt-3">
+              <p class="fw-semibold">Upload a file or drag and drop</p>
+            </div>
+            <p class="text-xs text-gray-500">
+              PNG, JPG, GIF up to 3MB
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row align-items-center">
+  <div class="col-md-2">
+    <label class="form-label">Privacy</label>
+  </div>
+  <div class="col-md-8 col-xl-5">
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" name="switch_make_public" id="switch_make_public">
+      <label class="form-check-label ms-2" for="switch_make_public">
+        Make my profile public
+      </label>
+    </div>
+  </div>
+</div>
+<hr class="my-6 d-md-none" />
+<div class="d-flex d-md-none justify-content-end gap-2 mb-6">
+  <button type="button" class="btn btn-sm btn-neutral">Cancel</button>
+  <button type="submit" class="btn btn-sm btn-primary">Save</button>
+</div>

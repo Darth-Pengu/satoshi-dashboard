@@ -1,0 +1,44 @@
+---
+layout: app
+title: Analytics 
+---
+
+<div class="vstack gap-3 gap-xl-6">
+  <div class="row row-cols-xl-4 g-3 g-xl-6">
+    <div class="col">
+      {% renderFile "./src/components/card-stat-3.njk" %}
+    </div>
+    <div class="col">
+      {% renderFile "./src/components/card-stat-3.njk" %}
+    </div>
+    <div class="col">
+      {% renderFile "./src/components/card-stat-3.njk" %}
+    </div> 
+    <div class="col">
+      {% renderFile "./src/components/card-stat-3.njk" %}
+    </div>
+  </div>
+  <div class="row g-3 g-xl-6">
+    <div class="col-xxl-12">
+      {% renderFile "./src/components/card-chart-3.njk", {
+        chart: {
+          height: '420'
+        }
+      } %}
+    </div>
+  </div>
+  <div class="row g-3 g-xl-6">
+    <div class="col-xl-5">
+      {% renderFile "./src/components/card-activity-timeline.njk", {
+        cryptos: cryptos,
+        limit: 6
+      } %}
+    </div>
+    <div class="col-xl-7">
+      {% renderFile "./src/components/card-orders.njk", {
+        orders: orders,
+        limit: 6
+      } %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+---
+layout: app
+title: Checklist
+header: false
+container: mw-screen-lg py-10
+---
+
+{% renderFile "./src/components/offcanvas-create-task.njk" %}
+
+<div class="border-bottom">
+  <div class="d-flex align-items-center">
+    <h1>{{ title }}</h1>
+    <div class="hstack gap-2 ms-auto">
+      <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCreate">
+        <i class="bi bi-plus-lg me-2"></i>
+        Create task
+      </button>
+    </div>
+  </div>
+  <ul class="nav nav-tabs nav-tabs-flush gap-8 overflow-x border-0 mt-4">
+    <li class="nav-item">
+      <a href="#" class="nav-link active">All</a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link">Pending</a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link">Testing</a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link">Finished</a>
+    </li>
+  </ul>
+</div>
+
+<div class="vstack gap-3 mt-6">
+  {% renderFile "./src/components/card-tasks.njk", {
+    tasks: tasks
+  } %}
+</div>

@@ -1,0 +1,25 @@
+<div class="mb-6 mb-xl-10">
+  <div class="row g-3 align-items-center">
+    <div class="col">
+      <h1 class="ls-tight">{{ title }}</h1>
+    </div>
+    <div class="col">
+      <div class="hstack gap-2 justify-content-end">
+        {% if has_offcanvas %}
+        <button type="button" class="btn btn-sm btn-square btn-neutral rounded-circle d-xxl-none" data-bs-toggle="offcanvas" data-bs-target="#responsiveOffcanvas" aria-controls="responsiveOffcanvas">
+          <i class="bi bi-three-dots"></i>
+        </button>
+        {% endif %}
+        <button type="button" class="btn btn-sm btn-neutral d-none d-sm-inline-flex" data-bs-target="#depositLiquidityModal" data-bs-toggle="modal">
+          <span class=" pe-2">
+            <i class="bi bi-plus-circle"></i>
+          </span>
+          <span>Liquidity</span>
+        </button>
+        <a href="/pages/page-overview.html" class="btn d-inline-flex btn-sm btn-dark">
+          <span>Trade</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

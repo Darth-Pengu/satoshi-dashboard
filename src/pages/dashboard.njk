@@ -1,0 +1,88 @@
+---
+layout: app
+title: Dashboard
+has_offcanvas: true
+name: Web3 and DeFi exchange dashboard
+is_free: false
+---
+
+{% modal 'Select token', 'cryptoModal', 'p-0' %}
+  {% renderFile "./src/components/list-group-cryptos.njk", {
+    cryptos: cryptos
+  } %}
+{% endmodal %}
+
+<div class="row g-3 g-xxl-6">
+  <div class="col-xxl-8">
+    <div class="vstack gap-3 gap-md-6">
+      <div class="row g-3">
+        <div class="col-md col-sm-6">
+          {% renderFile "./src/components/card-stat-2.njk" %}
+        </div>
+        <div class="col-md col-sm-6">
+          {% renderFile "./src/components/card-stat-2.njk", {
+            title: 'ADA',
+            subtitle: '10.745,49 ADA',
+            img: '/img/crypto/icon/ada.svg',
+            badge: {
+              value: '-3.2%',
+              color: 'danger'
+            }
+          } %}
+        </div>
+        <div class="col-md col-sm-6">
+          {% renderFile "./src/components/card-stat-2.njk", {
+            title: 'EOS',
+            subtitle: '7.890,00 EOS',
+            img: '/img/crypto/icon/eos.svg',
+            badge: {
+              value: '-2.2%',
+              color: 'danger'
+            }
+          } %}
+        </div>
+        <div class="col-md-1 d-none d-md-block">
+          <div class="card h-md-100 d-flex flex-column align-items-center justify-content-center py-4 bg-body-secondary bg-opacity-75 bg-opacity-100-hover">
+            <a href="#cryptoModal" class="stretched-link text-body-secondary" data-bs-toggle="modal">
+              <i class="bi bi-plus-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% renderFile "./src/components/card-chart-1.njk", {
+        chart: {
+          height: '270'
+        }
+      } %}
+      {% renderFile "./src/components/card-orders.njk", {
+        orders: orders.slice(0,7)
+      } %}
+    </div>
+  </div>
+  <div class="col-xxl-4">
+    {% offcanvas 'Quick Stats', 'end', 'responsiveOffcanvas', 'xxl' %}
+      <div class="vstack gap-6 gap-xxl-6">
+        {% renderFile "./src/components/card-balance.njk", {
+          class: 'border-0 border-xxl',
+          body: {
+            class: 'p-0 p-xxl-6'
+          }
+        } %}
+        <hr class="my-0 d-xxl-none" />
+        {% renderFile "./src/components/card-staking-list.njk", {
+          class: 'border-0 border-xxl',
+          body: {
+            class: 'p-0 p-xxl-6'
+          }
+        } %}
+        <hr class="my-0 d-xxl-none" />
+        {% renderFile "./src/components/card-subscriptions.njk", {
+          class: 'border-0 border-xxl',
+          body: {
+            class: 'p-0 p-xxl-6'
+          }
+        } %}
+      </div>
+    {% endoffcanvas %}
+  </div>
+</div>

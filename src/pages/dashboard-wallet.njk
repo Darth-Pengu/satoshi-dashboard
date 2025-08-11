@@ -1,0 +1,103 @@
+---
+layout: app
+title: Wallet
+has_offcanvas: true
+---
+
+{% modal 'Add a new card', 'addCardModal' %}
+  {% renderFile "./src/components/form-add-card.njk" %}
+{% endmodal %}
+
+{% modal 'Fund your account', 'topUpModal' %}
+  {% renderFile "./src/components/form-top-up.njk" %}
+{% endmodal %}
+
+{% offcanvas 'Your card details', 'end', 'cardDetailsOffcanvas' %}
+  {% include "stacks/card-details.njk" %}
+{% endoffcanvas %}
+
+<div class="row g-3 g-xl-6">
+  <div class="col-xxl-8">
+    <div class="vstack gap-3 gap-xl-6">
+      <div class="d-flex">
+        <div class="">
+          <div class="hstack gap-3 mb-1">
+            <h4 class="fw-semibold">Total Balance</h4>
+            <a href="#">
+              <i class="bi bi-eye"></i>
+            </a>
+            <a href="#">
+              <i class="bi bi-info-circle"></i>
+            </a>
+          </div>
+          <div class="text-2xl text-heading fw-bolder ls-tight">
+            $23.000,48
+          </div>
+        </div>
+        <div class="ms-auto align-self-end">
+          <button type="button" class="btn btn-sm btn-neutral" data-bs-toggle="modal" data-bs-target="#topUpModal">Top up</button>
+        </div>
+      </div>
+      <div class="row g-3 g-xl-6">
+        <div class="col-sm-6">
+          {% renderFile "./src/components/card-progress-1.njk" %}
+        </div>
+        <div class="col-sm-6">
+          {% renderFile "./src/components/card-progress-1.njk", {
+            progress: {
+              color: 'primary',
+              value: '40'
+            },
+            value1: {
+              title: 'Today\'s Withdrawl',
+              text: '1800,00 EUR'
+            },
+            value2: {
+              title: 'Daily Withdrawl Limit',
+              text: '3.000,00 EUR'
+            }
+          } %}
+        </div>
+      </div>
+      <div class="row g-3">
+        <div class="col-xl-3">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-1 g-3">
+            <div class="col">
+              {% renderFile "./src/components/card-stat-3.njk" %}
+            </div>
+            <div class="col">
+              {% renderFile "./src/components/card-stat-3.njk", {
+                title: 'Realized Profit',
+                value: '2,500.39',
+                badge: {
+                  direction: 'down',
+                  color: 'danger',
+                  value: '-3.5'
+                }
+              } %}
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-9">
+          {% renderFile "./src/components/card-chart-2.njk" %}
+        </div>
+      </div>
+      {% renderFile "./src/components/card-payment-methods.njk" %}
+    </div>
+  </div>
+  <div class="col-xxl-4">
+    {% offcanvas 'Quick Stats', 'end', 'responsiveOffcanvas', 'xxl' %}
+      <div class="vstack gap-6">
+        {% renderFile "./src/components/card-mockup-1.njk" %}
+        {% renderFile "./src/components/card-latest-orders.njk", {
+          orders: orders
+        } %}
+        {% renderFile "./src/components/card-latest-orders.njk", {
+          orders: orders,
+          limit: '3',
+          title: 'Upcoming payments'
+        } %}
+      </div>
+    {% endoffcanvas %}
+  </div>
+</div>

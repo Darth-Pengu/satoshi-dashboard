@@ -1,0 +1,20 @@
+---
+name: Card
+preview_class: max-w-screen-sm p-6 mx-auto
+---
+
+<div class="card border-primary-hover">
+  <div class="card-body d-flex gap-3">
+    {% img
+      src=img.src if img.src else '/img/crypto/icon/btc.svg',
+      class="w-rem-7 h-rem-7 mt-1"
+    %}
+    <div class="">
+      <span class="d-block text-muted mb-1">{{ title if title else 'Bitcoin' }}</span>
+      <span class="d-block text-lg fw-bold text-heading">{{ subtitle if subtitle else 'BTC/EUR' }}</span>
+    </div>
+    <span class="stretched-link ms-auto text-muted text-primary-hover" data-bs-target="#cryptoModal" data-bs-toggle="modal" role="button">
+      <i class="bi bi-chevron-down"></i>
+    </span>
+  </div>
+</div>

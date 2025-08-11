@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="{{ site.lang }}" data-theme="light">
+  <head>
+    {% include 'meta.njk' %}
+    {% include 'styles.njk' %}
+  </head>
+  <body>
+    <div class="d-flex flex-column justify-content-center align-items-center vh-100 overflow-y-auto {{ bg if bg else 'bg-body' }}">
+      <div class="container-xxl">
+        {{ content | safe }}
+      </div>
+    </div>
+  </body>
+</html>

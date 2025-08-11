@@ -1,0 +1,23 @@
+---
+name: Stats card
+description: This is a card
+is_free: true
+preview_class: max-w-screen-sm p-6 mx-auto
+---
+
+<div class="card bg-{{ color if color else 'tertiary' }} bg-opacity-10 border-{{ color if color else 'tertiary' }} border-opacity-40 {{ class if class }}">
+  <div class="card-body d-flex flex-column p-4">
+    <div class="d-flex align-items-center gap-2">
+      {% img class="w-rem-5 flex-none", src="/img/crypto/icon/usdt.svg" %}
+      <h6>USDT</h6>
+    </div>
+    <div class="mt-auto">
+      <div class="text-xs mt-4">
+        Total balance
+      </div>
+      <div class="text-sm fw-semibold">
+        75.800,00 USDT
+      </div>
+    </div>
+  </div>
+</div>

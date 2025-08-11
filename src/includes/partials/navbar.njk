@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent px-0 py-1" id="navbar">
+  <div class="container-fluid px-10">
+    <!-- Brand -->
+    <a class="navbar-brand" href="/pages/dashboard.html">
+      {% img src="/img/logos/logo-dark.svg", class="h-rem-10" %}
+    </a>
+    <!-- Icons -->
+    <div class="navbar-nav order-lg-4 align-items-lg-center d-none d-lg-flex ms-lg-auto">
+      <a href="#" class="nav-link nav-link-icon px-3 fw-normal text-sm d-none">
+        <i class="bi bi-broadcast me-1"></i>
+        Feedback?
+      </a>
+      <a href="#" class="nav-link nav-link-icon px-3 position-relative">
+        <i class="bi bi-chat"></i>
+      </a>
+      <a href="#" class="nav-link nav-link-icon px-3 position-relative">
+        <i class="bi bi-bell"></i>
+        <span class="w-3 h-3 bg-danger rounded-circle position-absolute top-2 end-2 border-2 border-light d-inline-block"></span>
+      </a>
+    </div>
+    <!-- Avatar -->
+    <div class="dropdown order order-lg-last ms-lg-4">
+      <a class="d-block" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="avatar avatar-sm bg-warning rounded-circle text-white">
+          {% img src="https://images.unsplash.com/photo-1579463148228-138296ac3b98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" %}
+        </div>
+      </a>
+      <div class="dropdown-menu dropdown-menu-end">
+        <div class="dropdown-header">
+          <h6 class="text-overflow m-0">Welcome!</h6>
+        </div>
+        <a href="#!" class="dropdown-item">
+          <i class="ni ni-single-02"></i>
+          <span>My profile</span>
+        </a>
+        <a href="#!" class="dropdown-item">
+          <i class="ni ni-settings-gear-65"></i>
+          <span>Settings</span>
+        </a>
+        <a href="#!" class="dropdown-item">
+          <i class="ni ni-calendar-grid-58"></i>
+          <span>Activity</span>
+        </a>
+        <a href="#!" class="dropdown-item">
+          <i class="ni ni-support-16"></i>
+          <span>Support</span>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="#!" class="dropdown-item">
+          <i class="ni ni-user-run"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </div>
+    <hr class="w-100 my-3 d-lg-none" />
+    <ul class="navbar-nav gap-2 mb-4 mb-lg-0 order-lg-3">
+      <li class="nav-item">
+        <a class="nav-link active" href="/" aria-current="page">Product</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/pages/dashboard.html">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/pages/page-overview.html">Trade</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/pages/exchange-staking.html">Stake</a>
+      </li>
+    </ul>
+    <form class="form-light mx-lg-8 col-12 col-lg-3 order-lg-2">
+      <div class="input-group input-group-sm input-group-inline">
+        <span class="input-group-text pe-3">
+          <i class="bi bi-search"></i>
+        </span>
+        <input type="text" class="form-control" placeholder="Search" aria-label="Search" autocomplete="off">
+      </div>
+    </form>
+  </div>
+</nav>

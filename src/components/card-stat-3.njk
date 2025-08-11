@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="p-4">
+    <h6 class="text-limit text-muted mb-3">{{ title if title else 'Orders'}}</h6>
+    <span class="text-sm text-muted text-opacity-90 fw-semibold">EUR</span>
+    <span class="d-block h3 ls-tight fw-bold">{{ value if value else '25.040,00' }}</span>
+    <p class="mt-1">
+      <span class="text-{{ badge.color if badge.color else 'success' }} text-xs">
+        <i class="fas fa-arrow-{{ badge.direction if badge.direction else 'up' }} me-1"></i>{{ badge.value if badge.value else '20' }}%
+      </span>
+      <span class="text-muted text-xs text-opacity-75">vs last week</span>
+    </p>
+  </div>
+</div>

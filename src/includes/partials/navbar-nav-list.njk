@@ -1,0 +1,35 @@
+<ul class="navbar-nav">
+  {% if group.name %}
+  <li>
+    <span class="nav-link text-xs fw-semibold text-uppercase text-muted ls-wide">
+      {{ group.name }}
+    </span> 
+  </li>
+  {% endif %}
+  {% for item in group.content %}
+  <li class="nav-item my-1">
+    <a class="nav-link d-flex align-items-center rounded-pill{{ ' active' if item.path in page.url }}"{% if item.submenu %} href="#sidebar-{{ item.label | lower | replace(' ', '-')  }}" data-bs-toggle="collapse" role="button" aria-expanded="{{ 'true' if item.path in page.url else false }}" aria-controls="sidebar-{{ item.label | lower | replace(' ', '-') }}"{% else %} href="{{ item.path }}"{% endif %}>
+      <i class="bi bi-{{ item.icon }}"></i>
+      <span>{{ item.label }}</span>
+      <span class="badge badge-sm rounded-pill me-n2 bg-{{ item.badge.color if item.badge.color else 'success' }}-subtle text-{{ item.badge.color if item.badge.color else 'success' }} ms-auto">{{ item.badge.text }}</span>
+    </a>
+    {% if item.submenu %}
+    <div class="collapse{% if item.path in page.url %} show{% endif %}" id="sidebar-{{ item.label | lower | replace(" ", "-") }}">
+      <ul class="nav nav-sm flex-column mt-1">
+        {% for subitem in item.submenu %}
+        <li class="nav-item">
+          <a href="{{ subitem.path | url }}" class="nav-link{% if subitem.path in page.url %} fw-bold{% endif %}">
+            {{ subitem.label }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% if not loop.last %}
+<!-- Divider -->
+<hr class="navbar-divider my-5 opacity-70">
+{% endif %}

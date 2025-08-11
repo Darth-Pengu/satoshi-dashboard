@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex align-items-start gap-4">
+      <div class="flex-none progress-circle progress-circle-xl progress-circle-{{ progress.color if progress.color else 'primary' }} text-{{ bg if bg else 'light' }}" aria-valuenow="{{ progress.value if progress.value else '65' }}" aria-valuemin="0" aria-valuemax="100" role="progressbar" style="--value: {{ progress.value if progress.value else '65' }}">
+        <span class="text-primary fw-bold">{{ progress.value if progress.value else '65' }}%</span>
+      </div>
+      <div>
+        <div class="mb-2">
+          <span class="d-block text-xs text-muted text-opacity-75">{{ value1.title if value1.title else 'Today\'s Spendings' }}</span>
+          <span class="d-block fw-bold text-heading text-sm">{{ value1.text if value1.text else '370,00 EUR' }}</span>
+        </div>
+        <div>
+          <span class="d-block text-xs text-muted text-opacity-75">{{ value2.title if value2.title else 'Daily Spending Limit' }}</span>
+          <span class="d-block fw-bold text-heading text-sm">{{ value2.text if value2.text else '7.500,00 EUR' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+  <head>
+    {% include 'meta.njk' %}
+    {% include 'styles.njk' %}
+  </head>
+  <body class="bg-body-tertiary">
+    {# Overlays #}
+    {% modal 'Deposit liquidity', 'depositLiquidityModal' %}
+      {% renderFile "./src/components/form-deposit-liquidity.njk" %}
+    {% endmodal %}
+    {% modal 'Connect your wallet', 'connectWalletModal' %}
+      {% renderFile "./src/components/list-group-wallets.njk", {
+        wallets: wallets,
+        search: false
+      } %}
+    {% endmodal %}
+    {# Container #}
+    <div class="d-flex flex-column flex-lg-row h-lg-100 gap-1">
+      {# Sidebar #}
+      {% include "partials/sidebar.njk" %}
+      {# Content #}
+      <div class="flex-lg-fill overflow-x-auto ps-lg-1 vstack vh-lg-100 position-relative">
+        <div class="d-none d-lg-flex py-3">
+          <div class="flex-none">
+            <div class="input-group input-group-sm input-group-inline w-rem-64 rounded-pill">
+              <span class="input-group-text rounded-start-pill">
+                <i class="bi bi-search me-2"></i>
+              </span>
+              <input type="search" class="form-control ps-0 rounded-end-pill" placeholder="Search" aria-label="Search">
+            </div>
+          </div>
+          <div class=" d-lg-none d-xxl-flex align-items-center gap-4 px-4 scrollable-x">
+            <div class="d-flex gap-2 text-xs">
+              <span class="text-heading fw-semibold">Cryptos:</span>
+              <span class="text-muted">21,713</span>
+            </div>
+            <div class="d-flex gap-2 text-xs">
+              <span class="text-heading fw-semibold">Market Cap:</span>
+              <span class="text-muted">$871,322,862,585</span>
+            </div>
+            <div class="d-flex gap-2 text-xs">
+              <span class="text-heading fw-semibold">24h Vol:</span>
+              <span class="text-muted">$180,639,667,232</span>
+            </div>
+          </div>
+          <div class="hstack flex-fill justify-content-end flex-nowrap gap-6 ms-auto px-6 px-xxl-8">
+            <button type="button" class="btn btn-xs btn-primary rounded-pill text-nowrap" data-bs-target="#connectWalletModal" data-bs-toggle="modal">
+              Connect
+            </button>
+            <div class="dropdown d-none">
+              <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-sun-fill"></i>
+              </a>
+              <div class="dropdown-menu">
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">Light</button>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">Dark</button>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto">System</button>
+              </div>
+            </div>
+            <div class="dropdown">
+              <a href="#" class="nav-link" id="dropdown-notifications" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-bell"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end px-2" aria-labelledby="dropdown-notifications">
+                <div class="dropdown-item d-flex align-items-center">
+                  <h6 class="dropdown-header px-0">Notifications</h6>
+                  <a href="#" class="text-sm fw-semibold ms-auto">Clear all</a>
+                </div>
+                {% for item in notifications %}
+                <div class="dropdown-item py-3 d-flex">
+                  <div>
+                    {% if item.avatar.type == 'image' %}
+                    {% img src=item.avatar.img.src, class="avatar rounded-circle" %}
+                    {% else %}
+                    <div class="avatar bg-{{ item.avatar.color }} text-white rounded-circle">
+                      {{ item.avatar.text }}
+                    </div>
+                    {% endif %}
+                  </div>
+                  <div class="flex-fill ms-3">
+                    <div class="text-sm lg-snug w-rem-64 text-wrap">
+                      <a href="#" class="fw-semibold text-heading text-primary-hover">Robert</a> sent a message to <a href="#" class="fw-semibold text-heading text-primary-hover">Webpixels</a>
+                    </div>
+                    <span class="text-muted text-xs">30 mins ago</span>
+                  </div>
+                </div>
+                {% endfor %}
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-item py-2 text-center">
+                    <a href="#" class="fw-semibold text-muted text-primary-hover">View all</a>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown">
+              <a class="avatar avatar-sm text-bg-dark rounded-circle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                <img src="/img/memoji/memoji-1.svg" />
+              </a>
+              {% renderFile "./src/components/dropdown-user.njk", {
+                profile: profile
+              } %}
+            </div>
+          </div>
+        </div>
+        <div class="flex-fill overflow-y-lg-auto scrollbar bg-body rounded-top-4 rounded-top-start-lg-4 rounded-top-end-lg-0 border-top border-lg shadow-2">
+          <main class="container-fluid {{ container if container else 'px-3 py-5 p-lg-6 p-xxl-8' }}">
+            {% if header != false %}
+              {% renderFile "./src/components/heading-page-1.njk", {
+                title: title,
+                has_offcanvas: has_offcanvas
+              } %}
+            {% endif %}
+            {{ content | safe }}
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="{{ '/js/main.js' }}"></script>
+    <script src="{{ '/js/switcher.js' }}"></script>
+
+  </body>
+</html>

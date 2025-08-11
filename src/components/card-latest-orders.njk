@@ -1,0 +1,39 @@
+---
+name: Card
+preview_class: max-w-screen-sm p-6 mx-auto
+---
+
+<div class="card {{ class if class }} {{ color if color }}">
+  <div class="card-body {{ body.class if body.class }}">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+      <div>
+        <h5>{{ title if title else 'Recent transactions' }}</h5>
+      </div>
+      <div class="hstack align-items-center">
+        <a href="#" class="text-muted">
+          <i class="bi bi-arrow-repeat"></i>
+        </a>
+      </div>
+    </div>
+    <div class="vstack gap-6">
+      {% for item in orders.slice(0, (limit if limit else 5)) %}
+      <div>
+        <div class="d-flex align-items-center gap-3">
+          <div class="icon icon-shape flex-none text-base text-bg-dark rounded-circle">
+            {% img src=item.img.src, class="w-rem-6 h-rem-6" %}
+          </div>
+          <div>
+            <h6 class="progress-text mb-1 d-block">{{ item.name }}</h6>
+            <p class="text-muted text-xs">
+              {{ item.status }} - {{ item.date }}
+            </p>
+          </div>
+          <div class="text-end ms-auto">
+            <span class="h6 text-sm">{{ item.total }}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<nav class="flex-none navbar navbar-vertical navbar-expand-lg navbar-light bg-transparent show vh-lg-100 px-0 py-2" id="sidebar">
+  <div class="container-fluid px-3 px-md-4 px-lg-6">
+    <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand d-inline-block py-lg-1 mb-lg-5" href="/pages/dashboard.html">
+      {% img src='/img/logos/logo-dark.svg', class="logo-dark h-rem-8 h-rem-md-10" %}
+      {% img src='/img/logos/logo-light.svg', class="logo-light h-rem-8 h-rem-md-10" %}
+    </a>
+    <div class="navbar-user d-lg-none">
+      <div class="dropdown">
+        <a class="d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+          <div>
+            <div class="avatar avatar-sm text-bg-secondary rounded-circle">
+              AE
+            </div>
+          </div>
+          <div class="d-none d-sm-block ms-3">
+            <span class="h6">{{ profile.shortname }}</span>
+          </div>
+          <div class="d-none d-md-block ms-md-2">
+            <i class="bi bi-chevron-down text-muted text-xs"></i>
+          </div>
+        </a>
+        {% renderFile "./src/components/dropdown-user.njk", {
+          profile: profile
+        } %}
+      </div>
+    </div>
+    <div class="collapse navbar-collapse overflow-x-hidden" id="sidebarCollapse">
+      {% for group in navMain %}
+        {% include "partials/navbar-nav-list.njk" %}
+      {% endfor %}
+      <div class="mt-auto"></div>
+      <div class="card bg-dark border-0 mt-5 mb-3">
+        <div class="card-body">
+          <div class="vstack gap-4">
+            <i class="bi bi-rocket-takeoff-fill text-white text-2xl"></i>
+            <p class="text-sm text-white text-opacity-70">
+              Upgrade your account to Pro for even more examples.
+            </p>
+            <a href="/pages/other-pricing.html" class="btn btn-sm btn-primary w-100">
+              Upgade now<i class="bi bi-arrow-right ms-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

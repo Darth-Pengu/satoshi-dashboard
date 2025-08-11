@@ -1,0 +1,65 @@
+---
+layout: app
+title: Widgets
+header: false
+---
+
+<div class="mb-6 mb-xl-8">
+  <div class="row g-3 align-items-center">
+    <div class="col">
+      <h1 class="h2 ls-tight">{{ title }}</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row g-5">
+  <div class="col-lg-6 vstack gap-5">
+    {% renderFile "./src/components/card-balance.njk", {} %}
+    <div class="row row-cols-2 g-3">
+      <div class="col">
+        {% renderFile "./src/components/card-stat-1.njk", {
+          class: "h-lg-100"
+        } %}
+      </div>
+      <div class="col">
+        {% renderFile "./src/components/card-stat-3.njk", {} %}
+      </div>
+    </div>
+    {% renderFile "./src/components/card-activity-timeline.njk", {
+      cryptos: cryptos
+    } %}
+    {% renderFile "./src/components/card-chart-2.njk", {} %}
+    {% renderFile "./src/components/card-plan-details.njk", {} %}
+    {% renderFile "./src/components/card-subscriptions.njk", {} %}
+    {% renderFile "./src/components/card-chart-3.njk", {
+      chart: {
+        height: 340
+      }
+    } %}
+  </div>
+  <div class="col-lg-6 vstack gap-5">
+    {% renderFile "./src/components/card-chart-1.njk", {} %}
+    {% renderFile "./src/components/card-latest-orders.njk", {
+      orders: orders
+    } %}
+    {% renderFile "./src/components/card-payment-methods.njk", {} %}
+    {% renderFile "./src/components/card-progress-2.njk", {} %}
+
+    {% renderFile "./src/components/card-pool.njk", {} %}
+    {% renderFile "./src/components/card-staking-list.njk", {} %}
+
+    <div class="row row-cols-2 g-3">
+      <div class="col">
+        {% renderFile "./src/components/card-stat-3.njk", {
+          class: "h-lg-100"
+        } %}
+      </div>
+      <div class="col">
+        {% renderFile "./src/components/card-stat-3.njk", {
+          title: 'Revenue',
+          value: '$1.5M'
+        } %}
+      </div>
+    </div>
+  </div>
+</div>

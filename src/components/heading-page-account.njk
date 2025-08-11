@@ -1,0 +1,29 @@
+<header class="border-bottom mb-10">
+  <div class="row align-items-center">
+    <div class="col-sm-6 col-12">
+      <h1 class="ls-tight">
+        {% if emoji %}
+          <span class="d-inline-block me-3">{{ emoji }}</span>
+        {% endif %}
+        {{ title }}
+      </h1>
+    </div>
+  </div>
+  <ul class="nav nav-tabs nav-tabs-flush gap-6 overflow-x border-0 mt-4">
+    <li class="nav-item">
+      <a href="{{ '/pages/account-general.html' if has_url else '#' }}" class="nav-link {{ 'active' if 'general' in page.url }}">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ '/pages/account-billing.html' if has_url else '#' }}" class="nav-link {{ 'active' if 'billing' in page.url }}">Billing</a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ '/pages/account-password.html' if has_url else '#' }}" class="nav-link {{ 'active' if 'password' in page.url }}">Password</a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ '/pages/account-notifications.html' if has_url else '#' }}" class="nav-link {{ 'active' if 'notifications' in page.url }}">Notifications</a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ '/pages/account-team.html' if has_url else '#' }}" class="nav-link {{ 'active' if 'team' in page.url }}">Team</a>
+    </li>
+  </ul>
+</header>

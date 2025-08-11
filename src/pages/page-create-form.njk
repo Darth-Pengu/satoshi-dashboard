@@ -1,0 +1,153 @@
+---
+layout: app
+header: false
+container: px-6 pb-10
+title: Add a new asset
+---
+
+{% renderFile "./src/components/heading-page-5.njk", {
+  title: title
+} %}
+
+<div class="row align-items-center g-3 mt-6">
+  <div class="col-md-2">
+    <label class="form-label mb-0">Asset name</label>
+  </div>
+  <div class="col-md-8 col-xl-5">
+    <input type="text" class="form-control" placeholder="Asset name" />
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row align-items-center g-3">
+  <div class="col-md-2">
+    <h6 class="fw-semibold">Description</h6>
+  </div>
+  <div class="col-md-8 col-xl-5">
+    <label class="visually-hidden">Description</label>
+    <textarea class="form-control" placeholder="Asset description ..." rows="2"></textarea>
+    <span class="d-block mt-2 text-sm text-muted">Make it unique.</span>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row align-items-center g-3">
+  <div class="col-md-2">
+    <label class="form-label mb-0">Select type</label>
+  </div>
+  <div class="col-md-8 col-xl-5">
+    <div class="d-flex gap-3 scrollable-x">
+      <div class="form-item-checkable">
+        <input class="form-item-check" type="radio" name="asset-type" id="asset-type-crypto" checked="checked">
+        <label class="form-item cursor-pointer" for="asset-type-crypto">
+          <span class="form-item-click d-inline-flex flex-column gap-3 align-items-center justify-content-center form-control w-rem-24 h-rem-24 text-center text-muted">
+            <i class="bi bi-currency-bitcoin text-xl"></i>
+            <span class="fw-semibold text-xs">Crypto</span>
+          </span>
+        </label>
+      </div>
+      <div class="form-item-checkable">
+        <input class="form-item-check" type="radio" name="asset-type" id="asset-type-stock">
+        <label class="form-item cursor-pointer" for="asset-type-stock">
+          <span class="form-item-click d-inline-flex flex-column gap-3 align-items-center justify-content-center form-control w-rem-24 h-rem-24 text-center text-muted">
+            <i class="bi bi-diagram-3 text-xl"></i>
+            <span class="fw-semibold text-xs">Stock</span>
+          </span>
+        </label>
+      </div>
+      <div class="form-item-checkable">
+        <input class="form-item-check" type="radio" name="asset-type" id="asset-type-currency">
+        <label class="form-item cursor-pointer" for="asset-type-currency">
+          <span class="form-item-click d-inline-flex flex-column gap-3 align-items-center justify-content-center form-control w-rem-24 h-rem-24 text-center text-muted">
+            <i class="bi bi-coin text-xl"></i>
+            <span class="fw-semibold text-xs">Currency</span>
+          </span>
+        </label>
+      </div>
+      <div class="form-item-checkable">
+        <input class="form-item-check" type="radio" name="asset-type" id="asset-type-commodity">
+        <label class="form-item cursor-pointer" for="asset-type-commodity">
+          <span class="form-item-click d-inline-flex flex-column gap-3 align-items-center justify-content-center form-control w-rem-24 h-rem-24 text-center text-muted">
+            <i class="bi bi-gem text-xl"></i>
+            <span class="fw-semibold text-xs">Commodity</span>
+          </span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row align-items-center g-3 align-items-center">
+  <div class="col-md-2">
+    <label class="form-label mb-0">Icon</label>
+  </div>
+  <div class="col-md-8 col-xl-5">
+    <div class="">
+      <div class="d-flex align-items-center">
+        <a href="#" class="avatar avatar-lg bg-warning rounded-circle text-white">
+          {% img src="/img/crypto/color/ada.svg" %}
+        </a>
+        <div class="hstack gap-2 ms-5">
+          <label for="file_upload" class="btn btn-sm btn-neutral">
+            <span>Upload</span>
+            <input type="file" name="file_upload" id="file_upload" class="visually-hidden">
+          </label>
+          <a href="#" class="btn d-inline-flex btn-sm btn-neutral text-danger">
+            <span>
+              <i class="bi bi-trash"></i>
+            </span>
+            <span class="d-none d-sm-block ms-2">Remove</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row align-items-center g-3 align-items-center">
+  <div class="col-md-2">
+    <label class="form-label mb-0">Category</label>
+  </div>
+  <div class="col-md-8 col-xl-5">
+    <label class="visually-hidden">Category</label>
+    <select class="form-select">
+      <option>Webpixels</option>
+      <option>Apple</option>
+      <option>Elrond</option>
+    </select>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row align-items-center g-3">
+  <div class="col-md-2">
+    <label class="form-label mb-0">Publishing options</label>
+  </div>
+  <div class="col-md-8 col-xl-5">
+    <div>
+      <label class="form-label">Start date</label>
+      <div class="input-group input-group-inline datepicker">
+        <span class="input-group-text pe-2">
+          <i class="bi bi-calendar"></i>
+        </span>
+        <input type="text" class="form-control" placeholder="Select date" data-input="data-input">
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row align-items-center g-3">
+  <div class="col-md-2">
+    <label class="form-label mb-0">Options</label>
+  </div>
+  <div class="col-md-8 col-xl-5">
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" name="switch_make_public" id="switch_make_public">
+      <label class="form-check-label ms-2" for="switch_make_public">
+        Make the asset public
+      </label>
+    </div>
+  </div>
+</div>
+<hr class="my-6 d-md-none" />
+<div class="d-flex d-md-none justify-content-end gap-2">
+  <button type="button" class="btn btn-sm btn-neutral">Cancel</button>
+  <button type="submit" class="btn btn-sm btn-primary">Save</button>
+</div>

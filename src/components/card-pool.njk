@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-body pb-5">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="avatar-group">
+        {% img src=img1.src if img1.src else '/img/crypto/color/ada.svg', class="avatar border border-2 border-body rounded-circle" %}
+        {% img src=img2.src if img2.src else '/img/crypto/color/usdt.svg', class="avatar border border-2 border-body rounded-circle" %}
+      </div>
+      <div class="text-end">
+        <span class="badge text-bg-body-secondary fw-semibold">APY 3%</span>
+      </div>
+    </div>
+    <div class="mt-6">
+      <a href="#depositLiquidityModal" class="d-block stretched-link h6 mb-2" data-bs-toggle="modal">
+        {{ title if title else 'ADA/USDT'}}
+      </a>
+      <div class="d-flex justify-content-between gap-4">
+        <div class="">
+          <span class="d-block text-sm text-muted">Price</span>
+          <span class="d-block text-sm text-heading fw-bold">{{ value1 if value1 else '0.430215 ADA' }}</span>
+        </div>
+        <div class="">
+          <span class="d-block text-sm text-muted">Volume</span>
+          <span class="d-block text-sm text-heading fw-bold">{{ value2 if value2 else '$7.25M' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

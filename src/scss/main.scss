@@ -1,0 +1,43 @@
+/*!
+ * Made with <3 by Webpixels
+ * Please purchase a license or subscription before using this theme
+ * Website: https://webpixels.io
+ */
+ 
+@import "bootstrap/scss/functions";
+   
+// Theme
+@import 'themes/default';
+
+// Main
+@import "@webpixels/css/main";
+
+// Extras   
+@import "@webpixels/css/extras/article";
+@import "@webpixels/css/extras/section-step";
+
+// Libs 
+@import "libs/apexcharts";  
+@import "libs/flatpickr";
+@import "libs/choices";
+@import "libs/docs";    
+  
+// Custom styles
+@import "user/custom";  
+
+// Color modes
+$color-mode-type: data;
+
+[data-bs-theme="light"] {   
+  @include light;
+}
+
+// [data-bs-theme="dark"] {   
+//   @include dark;
+// }
+
+
+@include color-mode(dark) {
+  @include dark;
+}
+

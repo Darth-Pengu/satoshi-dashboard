@@ -1,0 +1,64 @@
+---
+layout: app
+header: false
+title: Team Settings
+---
+
+{% renderFile "./src/components/modal-share.njk", {
+  title: 'Add team member'
+} %}
+
+{% renderFile "./src/components/heading-page-account.njk", {
+  title: title,
+  page: 'billing',
+  has_url: true
+} %}
+
+<div class="vstack gap-5 mt-8">
+  <div class="d-flex align-items-end justify-content-between">
+    <div>
+      <h3 class="fw-semibold mb-1">Your Team</h3>
+      <p class="text-sm text-muted">View and update your general details</p>
+    </div>
+    <div>
+      <button type="button" class="btn btn-neutral btn-sm" data-bs-toggle="modal" data-bs-target="#modalShare">Add team member</button>
+    </div>
+  </div>
+  <hr class="my-0">
+  <div class="row justify-content-between">
+    <div class="col-md-4">
+      <label class="form-label">Members</label>
+      <p class="text-sm text-muted">Manage your default payment method</p>
+    </div>
+    <div class="col-md-8 col-xl-7">
+      <div class="list-group">
+        {% for user in users.slice(0,7) %}
+          <div class="list-group-item d-flex align-items-center">
+            <div class="me-4">
+              <img src="{{ user.img.src }}" class="avatar rounded-circle">
+            </div>
+            <div class="flex-fill">
+              <a href="#" class="d-block text-sm text-heading text-primary-hover fw-semibold">{{ user.name }}</a>
+              <span class="d-block text-xs text-muted">{{ user.email }}</span>
+            </div>
+            <div class="ms-auto d-flex gap-4 align-items-center">
+              <div>
+                <span class="badge bg-{{ user.role.color if user.role.color else 'primary' }}-subtle text-{{ user.role.color if user.role.color else 'primary' }} rounded-pill">{{ user.role.name }}</span>
+              </div>
+              <div class="dropdown">
+                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="bi bi-three-dots-vertical"></i>
+                </a>
+                <div class="dropdown-menu">
+                  <a href="#!" class="dropdown-item">Action </a>
+                  <a href="#!" class="dropdown-item">Another action </a>
+                  <a href="#!" class="dropdown-item">Something else here</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

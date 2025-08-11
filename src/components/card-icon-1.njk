@@ -1,0 +1,11 @@
+---
+name: Card
+preview_class: max-w-screen-sm p-6 mx-auto
+---
+
+<div class="position-relative d-flex align-items-center gap-3 bg-body-secondary bg-primary-hover rounded p-2">
+  <div class="icon icon-shape rounded text-bg-{{ icon.color if icon.color else 'primary' }} text-lg">
+    <i class="bi bi-{{ icon.code if icon.code else 'star' }}"></i>
+  </div>
+  <a href="#" class="stretched-link text-heading fw-bold">{{ item.title if item.title else 'Top movers' }}</a>
+</div>

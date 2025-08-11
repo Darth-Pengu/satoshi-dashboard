@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="{{ site.lang }}" data-theme="light">
+  <head>
+    {% include 'meta.njk' %}
+    {% include 'styles.njk' %}
+  </head>
+  <body>
+    {# Overlays #}
+    {% modal 'Deposit liquidity', 'depositLiquidityModal' %}
+      {% renderFile "./src/components/form-deposit-liquidity.njk" %}
+    {% endmodal %}
+    {# Container #}
+    <div class="vstack vh-lg-100 bg-body-secondary">
+      {# Sidebar #}
+      {% include "partials/navbar.njk" %}
+      {# Content #}
+      <div class="flex-lg-1 overflow-y-lg-auto mx-10 bg-body rounded-top-4 border shadow">
+        <main class="container-fluid {{ container if container else 'p-10' }}">
+          {% if header != false %}
+            {% renderFile "./src/components/heading-page-1.njk", {
+              title: title
+            } %}
+          {% endif %}
+          {{ content | safe }}
+        </main>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <script src="{{ '/js/main.js' | url }}"></script>
+  </body>
+</html>

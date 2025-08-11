@@ -1,0 +1,91 @@
+---
+layout: app
+title: Asset Details
+header: false
+has_offcanvas: true
+---
+
+{# Overlays #}
+{% modal 'Select token', 'cryptoModal', 'p-0' %}
+  {% renderFile "./src/components/list-group-cryptos.njk", {
+    cryptos: cryptos
+  } %}
+{% endmodal %}
+
+{# Heading #}
+{% renderFile "./src/components/heading-page-2.njk", {
+  has_offcanvas: true
+} %}
+
+{# Content #}
+<div class="vstack gap-3 gap-xl-6 mt-8">
+  <div class="row row-cols-sm-2 row-cols-md-4 g-3">
+    <div class="col">
+      {% renderFile "./src/components/card-icon-2.njk" %}
+    </div>
+    <div class="col">
+      {% renderFile "./src/components/card-stat-4.njk", {
+        info: true
+      } %}
+    </div>
+    <div class="col">
+      {% renderFile "./src/components/card-stat-4.njk", {
+        title: 'Volume',
+        value: '$2,3M',
+        helper: {
+          value: '+23%'
+        },
+        info: true,
+        badge: {
+          value: '24H',
+          color: 'light'
+        }
+      } %}
+    </div>
+    <div class="col">
+      {% renderFile "./src/components/card-stat-4.njk", {
+        title: 'Volume',
+        value: '$2,3M',
+        helper: {
+          value: '+23%'
+        },
+        info: true,
+        badge: {
+          value: '24H',
+          color: 'light'
+        }
+      } %}
+    </div>
+  </div>
+  {% renderFile "./src/components/card-chart-3.njk" %}
+  {% offcanvas 'Buy or Sell Cardano (ADA)', 'end', 'responsiveOffcanvas', 'xxl' %}
+    <div class="row row-cols-md-2 g-6">
+      <div class="col">
+        {% renderFile "./src/components/card-buy-crypto.njk", {
+          class: 'border-0 border-xxl',
+          body: {
+            class: 'p-0 p-xxl-6'
+          }
+        } %}
+      </div>
+      <div class="col">
+        {% renderFile "./src/components/card-latest-orders.njk", {
+          orders: orders,
+          limit: 6,
+          title: 'Order history',
+          class: 'border-0 border-xxl h-md-100',
+          body: {
+            class: 'p-0 p-xxl-6'
+          }
+        } %}
+      </div>
+    </div>
+  {% endoffcanvas %}
+  <article class="article mw-read">
+    <h2>What is Bitcoin (BTC)</h2>
+    <p>
+      Bitcoin is a decentralized digital currency that was introduced in 2009 by an unknown person or group of people using the pseudonym Satoshi Nakamoto. It is the first and most well-known cryptocurrency, built on a technology called blockchain.
+    </p>
+    <a href="#" class="fw-semibold">Read more</a>
+  </article>
+</div>

@@ -1,0 +1,148 @@
+---
+layout: app
+header: false
+title: Notifications
+---
+
+{% renderFile "./src/components/heading-page-account.njk", {
+  title: title,
+  page: 'notifications',
+  has_url: true
+} %}
+
+<div class="d-flex align-items-end justify-content-between">
+  <div>
+    <h4 class="fw-semibold mb-1">Marketing Preferences</h4>
+    <p class="text-sm text-muted">
+      By filling your data you get a much better experience using our website.
+    </p>
+  </div>
+  <div class="d-none d-md-flex gap-2">
+    <button type="button" class="btn btn-sm btn-neutral">Cancel</button>
+    <button type="submit" class="btn btn-sm btn-primary">Save</button>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row g-3">
+  <div class="col-md-2">
+    <label class="form-label mb-0">Email</label>
+  </div>
+  <div class="col-md-5">
+    <div class="d-flex mb-5">
+      <div class="me-3">
+        <input class="form-check-input" type="checkbox" name="check_notification_1" id="check_notification_1">
+      </div>
+      <div>
+        <label class="form-label mb-0" for="check_notification_1">
+          Account Activity
+        </label>
+        <p class="text-sm text-muted">
+          Get important notifications about you or activity you&#39;ve missed
+        </p>
+      </div>
+    </div>
+    <div class="d-flex mb-5">
+      <div class="me-3">
+        <input class="form-check-input" type="checkbox" name="check_notification_2" id="check_notification_2">
+      </div>
+      <div>
+        <label class="form-label mb-0" for="check_notification_2">
+          Communications
+        </label>
+        <p class="text-sm text-muted">
+          Get important notifications about you or activity you&#39;ve missed
+        </p>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div class="me-3">
+        <input class="form-check-input" type="checkbox" name="check_notification_3" id="check_notification_3">
+      </div>
+      <div>
+        <label class="form-label mb-0" for="check_notification_3">
+          Meetups near you
+        </label>
+        <p class="text-sm text-muted">
+          Get important notifications about you or activity you&#39;ve missed
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row g-3">
+  <div class="col-md-2">
+    <label class="form-label mb-0">SMS</label>
+  </div>
+  <div class="col-md-5">
+    <div class="d-flex mb-5">
+      <div class="me-3">
+        <input class="form-check-input" type="checkbox" name="check_notification_4" id="check_notification_4">
+      </div>
+      <div>
+        <label class="form-label mb-0" for="check_notification_4">
+          Account Activity
+        </label>
+        <p class="text-sm text-muted">
+          Get important notifications about you or activity you&#39;ve missed
+        </p>
+      </div>
+    </div>
+    <div class="d-flex mb-5">
+      <div class="me-3">
+        <input class="form-check-input" type="checkbox" name="check_notification_5" id="check_notification_5">
+      </div>
+      <div>
+        <label class="form-label mb-0" for="check_notification_5">
+          Communications
+        </label>
+        <p class="text-sm text-muted">
+          Get important notifications about you or activity you&#39;ve missed
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="my-6" />
+<div class="row g-3">
+  <div class="col-md-2">
+    <label class="form-label mb-0">Push</label>
+  </div>
+  <div class="col-md-5">
+    <div class="d-flex mb-3">
+      <div class="me-3">
+        <input class="form-check-input" type="radio" name="radio_notifications" id="radio_notification_1">
+      </div>
+      <div>
+        <label class="form-label mb-0" for="radio_notification_1">
+          Everything
+        </label>
+      </div>
+    </div>
+    <div class="d-flex mb-3">
+      <div class="me-3">
+        <input class="form-check-input" type="radio" name="radio_notifications" id="radio_notification_2">
+      </div>
+      <div>
+        <label class="form-label mb-0" for="radio_notification_2">
+          Only what&#39;s important
+        </label>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div class="me-3">
+        <input class="form-check-input" type="radio" name="radio_notifications" id="radio_notification_3">
+      </div>
+      <div>
+        <label class="form-label mb-0" for="radio_notification_3">
+          No push notifications
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="my-6 d-md-none" />
+<div class="d-flex d-md-none justify-content-end gap-2 mb-6">
+  <button type="button" class="btn btn-sm btn-neutral">Cancel</button>
+  <button type="submit" class="btn btn-sm btn-primary">Save</button>
+</div>

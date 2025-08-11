@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="{{ site.lang }}" data-theme="light">
+  <head>
+    {% include 'styles.njk' %}
+  </head>
+  <body class="snippet p-6">
+    <div class="{{ preview_class if preview_class }}">
+      {{ content | safe }}
+    </div>
+  </body>
+</html>

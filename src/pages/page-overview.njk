@@ -1,0 +1,296 @@
+---
+layout: app
+title: Market
+container: p-0
+header: false
+---
+
+<div class="vstack">
+  <div class="px-3 px-md-8 pt-8">
+    {% renderFile "./src/components/heading-page-1.njk", {
+      title: title
+    } %}
+    <div class="d-none d-xl-flex justify-content-between">
+      <div class="d-flex flex-column">
+        <h5 class="mb-4 fw-semibold">Estimated Balance</h5>
+        <div class="text-lg fw-bold mt-auto">
+          <span class="text-heading">12.26189225 BTC</span>
+          <span class="text-muted"> ≈ $124,326.91</span>
+        </div>
+      </div>
+      <div class="hstack gap-32">
+        <div class="">
+          <h6 class="fw-normal mb-2">Spot balance</h6>
+          <div class="text-lg text-heading fw-bold">
+            0.26176725 BTC
+          </div>
+          <div class="text-muted">
+            ≈ $4,324.84
+          </div>
+        </div>
+        <div class="">
+          <h6 class="fw-normal mb-2">Fiat balance</h6>
+          <div class="text-lg text-heading fw-bold">
+            0.26176725 BTC
+          </div>
+          <div class="text-muted">
+            ≈ $4,324.84
+          </div>
+        </div>
+        <div class="">
+          <h6 class="fw-normal mb-2">Today's PNL</h6>
+          <div class="text-lg text-success fw-bold">
+            +$12,007.31
+          </div>
+          <div class="text-success">
+            +8.41%
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row row-cols-xl-4 row-cols-md-2 g-6 mt-6">
+      {% for item in cryptos.slice(0,4) %}
+      <div class="col">
+        {% renderFile "./src/components/card-stat-chart-1.njk", {
+          title: item.pair,
+          subtitle: item.name,
+          total: item.total,
+          color: item.change.color,
+          badge: {
+            text: item.change.value,
+            color: item.change.color,
+            icon: item.change.icon
+          },
+          img: {
+            src: item.img.src
+          },
+          data: item.data
+        } %}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row align-items-center g-6 mt-0 mb-6">
+      <div class="col-sm-6">
+        <div class="d-flex gap-2">
+          <div class="input-group input-group-sm input-group-inline w-100 w-md-50">
+            <span class="input-group-text">
+              <i class="bi bi-search me-2"></i>
+            </span>
+            <input type="search" class="form-control ps-0" placeholder="Search all assets" aria-label="Search">
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-neutral" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+              <i class="bi bi-plus-circle"></i>
+              <span class="ms-2">Status</span>
+            </button>
+            <div class="dropdown-menu">
+              <div class="dropdown-item py-1 px-2 d-flex align-items-center">
+                <div class="text-lg">
+                  <input class="form-check-input" type="checkbox" id="checkStatus1">
+                </div>
+                <div class="ms-3 me-5">
+                  <label for="checkStatus1">Backlog</label>
+                </div>
+              </div>
+              <div class="dropdown-item py-1 px-2 d-flex align-items-center">
+                <div class="text-lg">
+                  <input class="form-check-input" type="checkbox" id="checkStatus2">
+                </div>
+                <div class="ms-3 me-5">
+                  <label for="checkStatus2">Todo</label>
+                </div>
+                <div class="ms-auto">
+                  <span class="badge rounded-pill bg-opacity-25 bg-success text-success">23</span>
+                </div>
+              </div>
+              <div class="dropdown-item py-1 px-2 d-flex align-items-center">
+                <div class="text-lg">
+                  <input class="form-check-input" type="checkbox" id="checkStatus3">
+                </div>
+                <div class="ms-3 me-5">
+                  <label for="checkStatus3">In Progress</label>
+                </div>
+              </div>
+              <div class="dropdown-item py-1 px-2 d-flex align-items-center">
+                <div class="text-lg">
+                  <input class="form-check-input" type="checkbox" id="checkStatus4">
+                </div>
+                <div class="ms-3 me-5">
+                  <label for="checkStatus4">Done</label>
+                </div>
+                <div class="ms-auto">
+                  <span class="badge rounded-pill bg-opacity-25 bg-warning text-warning">190</span>
+                </div>
+              </div>
+              <div class="dropdown-item py-1 px-2 d-flex align-items-center">
+                <div class="text-lg">
+                  <input class="form-check-input" type="checkbox" id="checkStatus5">
+                </div>
+                <div class="ms-3 me-5">
+                  <label for="checkStatus5">Cancelled</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-neutral" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+              <i class="bi bi-plus-circle"></i>
+              <span class="ms-2">Priority</span>
+            </button>
+            <div class="dropdown-menu">
+              <div class="dropdown-item py-1 px-2 d-flex align-items-center">
+                <div class="text-lg">
+                  <input class="form-check-input" type="checkbox" id="checkPriority1">
+                </div>
+                <div class="ms-3 me-5">
+                  <label class="d-flex align-items-center" for="checkPriority1">
+                    <span class="w-rem-2 h-rem-2 me-2 bg-success rounded-circle"></span>
+                    <span>Low</span>
+                  </label>
+                </div>
+              </div>
+              <div class="dropdown-item py-1 px-2 d-flex align-items-center">
+                <div class="text-lg">
+                  <input class="form-check-input" type="checkbox" id="checkPriority2">
+                </div>
+                <div class="ms-3 me-5">
+                  <label class="d-flex align-items-center" for="checkPriority2">
+                    <span class="w-rem-2 h-rem-2 me-2 bg-warning rounded-circle"></span>
+                    <span>Medium</span>
+                  </label>
+                </div>
+              </div>
+              <div class="dropdown-item py-1 px-2 d-flex align-items-center">
+                <div class="text-lg">
+                  <input class="form-check-input" type="checkbox" id="checkPriority3">
+                </div>
+                <div class="ms-3 me-5">
+                  <label class="d-flex align-items-center" for="checkPriority3">
+                    <span class="w-rem-2 h-rem-2 me-2 bg-danger rounded-circle"></span>
+                    <span>High</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="hstack justify-content-end gap-2">
+          <div class="d-flex align-items-center justify-content-end gap-2">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-neutral flex-none d-flex align-items-center gap-2 py-1 px-2" data-bs-toggle="dropdown" aria-expanded="false">
+                {% img src="/img/flags/eu.svg", class="w-rem-5 h-rem-5 rounded-circle" %}
+                <span>EUR</span>
+                <i class="bi bi-chevron-down text-xs me-1"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-sm">
+                <li>
+                  <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                    {% img src="/img/flags/us.svg", class="w-rem-6 h-rem-6 rounded-circle" %}
+                    <span>USD</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                    {% img src="/img/flags/eu.svg", class="w-rem-6 h-rem-6 rounded-circle" %}
+                    <span>EUR</span>
+                    <span class="ms-auto text-success text-lg">
+                      <i class="bi bi-check"></i>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                    {% img src="/img/flags/gb.svg", class="w-rem-6 h-rem-6 rounded-circle" %}
+                    <span>GBP</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                    {% img src="/img/flags/au.svg", class="w-rem-6 h-rem-6 rounded-circle" %}
+                    <span>AUD</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                    {% img src="/img/flags/ro.svg", class="w-rem-6 h-rem-6 rounded-circle" %}
+                    <span>RON</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-end gap-2">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-neutral flex-none d-flex align-items-center gap-2 p-1" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="ms-2">24H</span>
+                <i class="bi bi-chevron-down text-xs me-1"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-sm">
+                <li>
+                  <a class="dropdown-item gap-2" href="#">
+                    12H
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item gap-2" href="#">
+                    6H
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item gap-2" href="#">
+                    4H
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item gap-2" href="#">
+                    1H
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item gap-2" href="#">
+                    30m
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-top">
+    {% renderFile "./src/components/table-cryptos.njk", {
+      cryptos: cryptos
+    } %}
+    <div class="py-4 px-6">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-md-6 d-none d-md-block">
+          <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
+        </div>
+        <div class="col-md-auto">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination pagination-spaced gap-1">
+              <li class="page-item">
+                <a class="page-link" href="#">
+                  <i class="bi bi-chevron-left"></i>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">
+                  <i class="bi bi-chevron-right"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
