@@ -49,10 +49,15 @@ is_free: false
           </div>
         </div>
       </div>
-      {% renderFile "./src/components/card-chart-1.njk", {
+             {% renderFile "./src/components/card-chart-1.njk", {
         chart: {
           height: '270'
         }
+      } %}
+      {% renderFile "./src/components/card-crypto-price.njk", {
+        title: 'BTC/USDT',
+        symbol: 'BTCUSDT',
+        chart: { height: '300' }
       } %}
       {% renderFile "./src/components/card-orders.njk", {
         orders: orders.slice(0,7)

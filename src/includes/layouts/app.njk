@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ site.lang }}">
+<html lang="{{ site.lang }}" data-api-url="{{ site.api_url if site.api_url else '' }}" data-ws-url="{{ site.ws_url if site.ws_url else '' }}">
   <head>
     {% include 'meta.njk' %}
     {% include 'styles.njk' %}

@@ -27,5 +27,8 @@ module.exports = {
   support: "",
   createdAt: "2022-02-02",
   copyright: "2023",
-  assetsUrl: 'https://assets.webpixels.io'
+  assetsUrl: 'https://assets.webpixels.io',
+  // Optionally set these for deployments where API is not on localhost
+  api_url: process.env.API_URL || '',
+  ws_url: process.env.WS_URL || ''
 }
