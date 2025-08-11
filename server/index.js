@@ -3,12 +3,35 @@ const http = require('http');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { WebSocketServer } = require('ws');
+const path = require('path');
 
 const PORT = process.env.PORT || 4000;
+const AUTH_TOKEN = process.env.DASHBOARD_TOKEN || process.env.AUTH_TOKEN || '';
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+
+// Serve static build when available (for Railway web service)
+const staticDir = path.join(__dirname, '..', 'build');
+if (process.env.SERVE_STATIC !== 'false') {
+  app.use(express.static(staticDir));
+  app.get('/', (_req, res) => {
+    res.sendFile(path.join(staticDir, 'pages', 'dashboard.html'), (err) => {
+      if (err) res.sendFile(path.join(staticDir, 'index.html'), () => {});
+    });
+  });
+}
+
+function requireAuthIfConfigured(req, res, next) {
+  if (!AUTH_TOKEN) return next();
+  const header = req.headers['authorization'] || '';
+  const bearer = header.startsWith('Bearer ') ? header.slice(7) : '';
+  const apiKey = req.headers['x-api-key'] || '';
+  const token = bearer || apiKey;
+  if (token === AUTH_TOKEN) return next();
+  return res.status(401).json({ error: 'unauthorized' });
+}
 
 // In-memory demo state; replace with your trading bot integration
 let state = {
@@ -65,7 +88,7 @@ app.get('/api/prices', (req, res) => {
 });
 
 // Accept trade events from the bot (simple demo)
-app.post('/api/events/trade', (req, res) => {
+app.post('/api/events/trade', requireAuthIfConfigured, (req, res) => {
   const trade = req.body;
   if (!trade || !trade.name) return res.status(400).json({ error: 'invalid trade' });
   // Normalize minimal shape
@@ -85,7 +108,7 @@ app.post('/api/events/trade', (req, res) => {
 });
 
 // Accept price tick
-app.post('/api/events/price', (req, res) => {
+app.post('/api/events/price', requireAuthIfConfigured, (req, res) => {
   const tick = req.body; // { symbol, price, ts }
   if (!tick || typeof tick.price !== 'number') return res.status(400).json({ error: 'invalid tick' });
   const date = tick.ts ? new Date(tick.ts) : new Date();
@@ -94,6 +117,20 @@ app.post('/api/events/price', (req, res) => {
   const point = { date: date.toISOString(), open, close };
   state.prices.push(point);
   broadcast({ type: 'price_tick', data: { symbol: tick.symbol || 'BTCUSDT', ts: date.toISOString(), price: tick.price } });
+  res.json({ ok: true });
+});
+
+// Accept summary update
+app.post('/api/events/summary', requireAuthIfConfigured, (req, res) => {
+  const s = req.body || {};
+  state.summary = {
+    equityUsd: Number(s.equityUsd ?? state.summary.equityUsd),
+    pnl24hUsd: Number(s.pnl24hUsd ?? state.summary.pnl24hUsd),
+    openPositions: Number(s.openPositions ?? state.summary.openPositions),
+    openOrders: Number(s.openOrders ?? state.summary.openOrders),
+    updatedAt: new Date().toISOString(),
+  };
+  broadcast({ type: 'summary', data: state.summary });
   res.json({ ok: true });
 });
 

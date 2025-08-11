@@ -9,6 +9,7 @@
     "watch:css": "parcel watch ./src/scss/*.scss --dist-dir ./dist/css",
     "watch:js": "parcel watch ./src/js/*.js --dist-dir ./dist/js",
     "serve:api": "node ./server/index.js",
+    "start:railway": "npm run build && node ./server/index.js",
     "build": "run-s clean build:parcel build:eleventy purge:css",
     "build:eleventy": "cross-env ELEVENTY_ENV=production eleventy",
     "build:parcel": "run-p build:css build:js",
